@@ -1,0 +1,96 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+
+<router-outlet></router-outlet>
+
+
+<div style="display: flex;flex-direction: row;padding: 5px;">
+
+
+  <div class="panel panel-success" style=" display:inline-block;width:50%;padding: 5px;">
+
+        <div class="panel-body"
+             dnd-sortable-container
+             [sortableData]="sourceItems"
+             [dropZones]="['delete-dropZone']"
+             style="border: 1px solid gray;min-height: 50px;min-width: 50px;padding: 5px;">
+             <div style="padding: 1px">
+                <mdb-card class="bord-open">
+                      <mdb-card-body>
+                        <mdb-card-title>
+                          <span style="font-weight: bold; font-size: 1rem;">Open</span>
+                        </mdb-card-title>
+                      </mdb-card-body>
+                    </mdb-card></div>
+            <div class="list-group">
+                 <span *ngFor="let item of sourceItems; let i = index;"
+                       dnd-sortable
+                       [sortableIndex]="i"
+                       style="margin-right: 5px !important;">{{item}}&nbsp;</span>
+            </div>
+        </div>
+
+  </div>
+
+
+  <div class="panel panel-success" style=" display:inline-block;width:50%;padding: 5px;">
+            <div class="panel-body"
+                 dnd-sortable-container
+                 [sortableData]="listRecycled"
+                 [dropZones]="['delete-dropZone']"
+                 style="border: 1px solid gray;min-height: 50px;min-width: 50px;padding: 5px;">
+                 <div style="padding: 1px">
+                    <mdb-card class="bord-wip">
+                          <mdb-card-body>
+                            <mdb-card-title>
+                              <span style="font-weight: bold; font-size: 1rem;">WIP</span>
+                            </mdb-card-title>
+                          </mdb-card-body>
+                        </mdb-card></div>
+                <div class="list-group">
+                     <span *ngFor="let iteml of listRecycled; let p = index;"
+                           dnd-sortable
+                           [sortableIndex]="p"
+                           class="badge badge-info"
+                           style="margin: 4px !important;">{{iteml}}&nbsp;
+                           <i (click)="delete(p)" class="fa fa-times" aria-hidden="true"></i>
+                          </span>
+                </div>
+            </div>
+  </div>
+
+
+  <div class="panel panel-success" style=" display:inline-block;width:50%;padding: 5px;">
+              <div class="panel-body"
+                   dnd-sortable-container
+                   [sortableData]="anotherlist"
+                   [dropZones]="['delete-dropZone']"
+                   style="border: 1px solid gray;min-height: 50px;min-width: 50px;padding: 5px;">
+                   <div style="padding: 1px">
+                      <mdb-card class="bord-done">
+                            <mdb-card-body>
+                              <mdb-card-title>
+                                <span style="font-weight: bold; font-size: 1rem;">Done</span>
+                              </mdb-card-title>
+                            </mdb-card-body>
+                          </mdb-card></div>
+                  <div class="list-group">
+                       <span *ngFor="let iteml of anotherlist; let p = index;"
+                             dnd-sortable
+                             [sortableIndex]="p"
+                             class="badge badge-info"
+                             style="margin: 4px !important;">{{iteml}}&nbsp;
+                             <i (click)="delete(p)" class="fa fa-times" aria-hidden="true"></i>
+                            </span>
+                  </div>
+              </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
